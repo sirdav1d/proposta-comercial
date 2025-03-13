@@ -68,7 +68,11 @@ export function PortfolioSlide({
 						logo do cliente
 					</p>
 				)}
-				<Badge variant={'secondary'}>Portfólio</Badge>
+				<Badge
+					className='shadow-xl shadow-emerald-300/50'
+					variant={'secondary'}>
+					Portfólio
+				</Badge>
 				<CardTitle className='text-4xl font-bold tracking-tighter md:text-5xl/tight'>
 					Projetos de Sucesso
 				</CardTitle>

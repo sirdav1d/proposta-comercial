@@ -97,7 +97,11 @@ export function Solutions({
 	return (
 		<Card className='px-14 py-10 relative max-h-[680px] h-full '>
 			<CardHeader>
-				<Badge variant={'secondary'}>Especialidades</Badge>
+				<Badge
+					className='shadow-xl shadow-emerald-300/50'
+					variant={'secondary'}>
+					Especialidades
+				</Badge>
 				{projectData && projectData.avatarUrl ? (
 					<>
 						<Image

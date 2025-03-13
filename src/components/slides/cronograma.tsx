@@ -46,7 +46,11 @@ export function Cronograma({ projectData, isActive }: TimelineSlideProps) {
 						logo do cliente
 					</p>
 				)}
-				<Badge variant={'secondary'}>Cronograma</Badge>
+				<Badge
+					className='shadow-xl shadow-emerald-300/50'
+					variant={'secondary'}>
+					Cronograma
+				</Badge>
 				<CardTitle className='text-4xl font-bold tracking-tighter md:text-5xl/tight'>
 					{projectData ? (
 						<p>

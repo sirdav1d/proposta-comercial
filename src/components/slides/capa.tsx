@@ -37,7 +37,7 @@ export default function Capa({
 				</CardTitle>
 			</CardHeader>
 			<CardContent className='flex min-h-80 mt-auto w-full items-center justify-end'>
-				<span className='bg-primary h-64 w-64 rounded-full absolute mt-80 mr-16'></span>
+				<span className='bg-primary shadow-xl shadow-emerald-300/20 h-64 w-64 rounded-full absolute mt-80 mr-16'></span>
 				<span className='opacity-10 text-9xl font-bold absolute z-50 bottom-2 right-2'>
 					00
 				</span>
@@ -45,7 +45,7 @@ export default function Capa({
 			<CardFooter className='flex h-full w-full mt-auto items-start gap-5 flex-col'>
 				<Badge
 					variant={'secondary'}
-					className='font-semibold'>
+					className='font-semibold shadow-xl shadow-emerald-300/50'>
 					Proposta Comercial
 				</Badge>
 				<h2 className='font-bold text-6xl'>

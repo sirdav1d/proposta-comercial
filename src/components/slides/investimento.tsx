@@ -66,7 +66,11 @@ export function InvestmentSlide({
 						logo do cliente
 					</p>
 				)}
-				<Badge variant={'secondary'}>Investimento</Badge>
+				<Badge
+					className='shadow-xl shadow-emerald-300/50'
+					variant={'secondary'}>
+					Investimento
+				</Badge>
 				<CardTitle className='text-3xl font-bold tracking-tighter md:text-5xl/tight'>
 					{projectData ? (
 						<h2>
