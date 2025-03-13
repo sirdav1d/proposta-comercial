@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
 				protocol: 'https',
 				hostname: 'logopng.com.br',
 			},
+			{
+				protocol: 'https',
+				hostname: 'w7.pngwing.com',
+			},
+			{
+				protocol: 'https',
+				hostname: 'encrypted-tbn0.gstatic.com',
+			},
 		],
 	},
 };

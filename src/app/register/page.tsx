@@ -21,6 +21,8 @@ import { useState } from 'react';
 import { ModeToggle } from '@/components/mode-toogle';
 import type { ProjectData } from '@/types/project';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../../public/logo-emerald.png';
 
 export default function CadastroPage() {
 	const router = useRouter();
@@ -51,7 +53,7 @@ export default function CadastroPage() {
 	};
 
 	return (
-		<main className='flex items-center justify-center h-full md:h-screen w-full  relative z-10 px-4 pb-10'>
+		<main className='flex flex-col gap-5 md:items-center justify-center h-full md:h-screen w-full  relative z-10 px-4 py-5'>
 			<ModeToggle />
 			<Button
 				asChild
@@ -62,8 +64,14 @@ export default function CadastroPage() {
 					Voltar
 				</Link>
 			</Button>
-			{/* <ChefHat className='z-20 size-8 text-primary absolute left-5 xl:left-1/2 top-5 xl:top-20 opacity-50' /> */}
-			<Card className='border-primary/20  mt-28 xl:mt-0'>
+			<Image
+				src={logo}
+				alt='logo synergia'
+				width={220}
+				height={80}
+				className='z-20 w-40 md:w-fit mt-1.5 md:mt-0'
+			/>
+			<Card className='border-primary/20 mt-5 xl:mt-0'>
 				<CardHeader className='space-y-1'>
 					<CardTitle className='text-2xl font-bold'>
 						Cadastro de Projeto

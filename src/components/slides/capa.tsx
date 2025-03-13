@@ -10,6 +10,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from '../ui/card';
+import logo from '../../../public/logo-emerald.png';
 
 export default function Capa({
 	projectData,
@@ -21,7 +22,11 @@ export default function Capa({
 			<span className='dark:bg-zinc-50/20 bg-zinc-400/20 backdrop-blur-md z-10 h-full w-80 absolute top-0 right-0 rounded-tr-xl rounded-br-xl'></span>
 			<CardHeader>
 				<CardTitle className='flex items-center w-full justify-between text-primary'>
-					Tars Projetos
+					<Image
+						src={logo}
+						alt={'logo synergia'}
+						width={200}
+						height={80}></Image>
 					{projectData && projectData.avatarUrl ? (
 						<>
 							<Image
