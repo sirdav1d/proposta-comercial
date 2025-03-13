@@ -1,100 +1,98 @@
 /** @format */
 
-import Image from 'next/image';
+'use client';
+
+import { ModeToggle } from '@/components/mode-toogle';
+import Capa from '@/components/slides/capa';
+import { Contato } from '@/components/slides/contato';
+import { Cronograma } from '@/components/slides/cronograma';
+import { InvestmentSlide } from '@/components/slides/investimento';
+import { PortfolioSlide } from '@/components/slides/portfolio';
+import { Solutions } from '@/components/slides/solutions';
+import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from '@/components/ui/carousel';
+import Link from 'next/link';
+import { ProjectData } from '@/types/project';
 
 export default function Home() {
-	return (
-		<div className='grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-			<main className='flex flex-col gap-[32px] row-start-2 items-center sm:items-start'>
-				<Image
-					className='dark:invert'
-					src='/next.svg'
-					alt='Next.js logo'
-					width={180}
-					height={38}
-					priority
-				/>
-				<ol className='list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]'>
-					<li className='mb-2 tracking-[-.01em]'>
-						Get started by editing{' '}
-						<code className='bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold'>
-							src/app/page.tsx
-						</code>
-						.
-					</li>
-					<li className='tracking-[-.01em]'>
-						Save and see your changes instantly.
-					</li>
-				</ol>
+	const [projectData, setProjectData] = useState<ProjectData | null>(null);
+	useEffect(() => {
+		// Carregar dados do localStorage quando a página for carregada
+		const savedData = localStorage.getItem('projectData');
+		if (savedData) {
+			try {
+				setProjectData(JSON.parse(savedData));
+			} catch (error) {
+				console.error('Erro ao carregar dados do projeto:', error);
+			}
+		}
 
-				<div className='flex gap-4 items-center flex-col sm:flex-row'>
-					<a
-						className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-primary text-background gap-2  dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto'
-						href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-						target='_blank'
-						rel='noopener noreferrer'>
-						<Image
-							className='dark:invert'
-							src='/vercel.svg'
-							alt='Vercel logomark'
-							width={20}
-							height={20}
+		// Adicionar event listeners para navegação com teclado
+	}, []);
+
+	const handleClearProject = () => {
+		localStorage.removeItem('projectData');
+		setProjectData(null);
+	};
+
+	return (
+		<main className='flex bg-zinc-50 dark:bg-black items-center justify-center h-screen overflow-hidden p-20'>
+			<ModeToggle />
+			<Button
+				asChild
+				className='text-secondary font-semibold'>
+				<Link
+					href={'/register'}
+					className='absolute top-5 right-20'>
+					Cadastrar Novo
+				</Link>
+			</Button>
+			<Button
+				onClick={() => handleClearProject()}
+				variant={'outline'}
+				className=' font-semibold absolute top-5 right-60'>
+				Resetar
+			</Button>
+			<Carousel className='w-full max-w-7xl '>
+				<CarouselContent>
+					<CarouselItem>
+						<Capa projectData={projectData} />
+					</CarouselItem>
+					<CarouselItem>
+						<Solutions projectData={projectData} />
+					</CarouselItem>
+					<CarouselItem>
+						<PortfolioSlide projectData={projectData} />
+					</CarouselItem>
+					<CarouselItem>
+						<Cronograma
+							isActive={true}
+							projectData={projectData}
 						/>
-						Deploy now
-					</a>
-					<a
-						className='rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]'
-						href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-						target='_blank'
-						rel='noopener noreferrer'>
-						Read our docs
-					</a>
-				</div>
-			</main>
-			<footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
-				<a
-					className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-					href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'>
-					<Image
-						aria-hidden
-						src='/file.svg'
-						alt='File icon'
-						width={16}
-						height={16}
-					/>
-					Learn
-				</a>
-				<a
-					className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-					href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'>
-					<Image
-						aria-hidden
-						src='/window.svg'
-						alt='Window icon'
-						width={16}
-						height={16}
-					/>
-					Examples
-				</a>
-				<a
-					className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-					href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'>
-					<Image
-						aria-hidden
-						src='/globe.svg'
-						alt='Globe icon'
-						width={16}
-						height={16}
-					/>
-					Go to nextjs.org →
-				</a>
-			</footer>
-		</div>
+					</CarouselItem>
+					<CarouselItem>
+						<InvestmentSlide
+							isActive={true}
+							projectData={projectData}
+						/>
+					</CarouselItem>
+					<CarouselItem>
+						<Contato
+							isActive={true}
+							projectData={projectData}
+						/>
+					</CarouselItem>
+				</CarouselContent>
+				<CarouselPrevious />
+				<CarouselNext />
+			</Carousel>
+		</main>
 	);
 }
